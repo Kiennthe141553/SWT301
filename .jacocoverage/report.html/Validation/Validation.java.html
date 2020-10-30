@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Validation.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;DoctorManagement&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Validation</a> &gt; <span class="el_source">Validation.java</span></div><h1>Validation.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Validation;
+
+import java.text.SimpleDateFormat;
+
+/**
+ *
+ * @author ASUS
+ */
+<span class="nc" id="L14">public class Validation {</span>
+    private static final String EMAIL_REGEX = &quot;^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$&quot;;
+    private static final String PHONE_REGEX = &quot;\\b\\d{3}([-])\\d{3}\\1\\d{4}\\b&quot;;
+    public static String getName(String str) throws Exception {
+        try {
+<span class="pc bpc" id="L19" title="1 of 4 branches missed.">            if (str.length() &lt; 0 || str.length() &gt; 50) {</span>
+<span class="fc" id="L20">                throw new Exception(&quot;Name can not greater than 50 character!&quot;);</span>
+            }
+<span class="pc bpc" id="L22" title="1 of 2 branches missed.">            if (str.equals(&quot;&quot;)) {</span>
+<span class="nc" id="L23">                throw new Exception(&quot;Name can not empty!&quot;);</span>
+            }
+<span class="fc" id="L25">            return str;</span>
+<span class="fc" id="L26">        } catch (Exception e) {</span>
+<span class="fc" id="L27">            throw e;</span>
+        }
+    }
+
+    public static String getDob(String str) throws Exception {
+<span class="fc" id="L32">        SimpleDateFormat dateFormat = new SimpleDateFormat(&quot;dd/MM/yyyy&quot;);</span>
+<span class="fc" id="L33">        dateFormat.setLenient(false);</span>
+        try {
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">            if (str.equals(dateFormat.parse(str))) {</span>
+<span class="nc" id="L36">                throw new Exception(&quot;Date of birth's in format(dd/MM/yyyy)!&quot;);</span>
+            }
+<span class="fc" id="L38">            return str;</span>
+<span class="nc" id="L39">        } catch (Exception e) {</span>
+<span class="nc" id="L40">            throw e;</span>
+        }
+    }
+
+    public static int getState(String str) throws Exception {
+        int integer;
+        try{
+<span class="fc" id="L47">            integer = Integer.parseInt(str);           </span>
+<span class="fc" id="L48">        }catch(Exception e){</span>
+<span class="fc" id="L49">            throw new Exception(&quot;Invalid state!&quot;);</span>
+<span class="fc" id="L50">        }</span>
+<span class="pc bpc" id="L51" title="2 of 4 branches missed.">        if(integer &lt;0 || integer &gt; 3){</span>
+<span class="nc" id="L52">            throw new Exception(&quot;State range form 0-3!&quot;);</span>
+        }
+<span class="fc" id="L54">        return integer;</span>
+    }
+
+    public static String getSpec(String str) throws Exception {
+        try {
+<span class="pc bpc" id="L59" title="2 of 4 branches missed.">            if (str.length() &lt; 0 || str.length() &gt; 255) {</span>
+<span class="nc" id="L60">                throw new Exception(&quot;Spec can not greater than 255 character!&quot;);</span>
+            }
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">            if (str.equals(&quot;&quot;)) {</span>
+<span class="nc" id="L63">                throw new Exception(&quot;Spec can not empty!&quot;);</span>
+            }
+<span class="fc" id="L65">            return str;</span>
+<span class="nc" id="L66">        } catch (Exception e) {</span>
+<span class="nc" id="L67">            throw e;</span>
+        }
+    }
+
+    public static int getID(String id) throws Exception {
+        int integer;
+        try{
+<span class="fc" id="L74">            integer = Integer.parseInt(id);           </span>
+<span class="fc" id="L75">        }catch(Exception e){</span>
+<span class="fc" id="L76">            throw new Exception(&quot;Id must be an integer!&quot;);</span>
+<span class="fc" id="L77">        }</span>
+<span class="fc" id="L78">        return integer;</span>
+    }
+    
+    public static String getEmail(String str) throws Exception{
+        try{
+<span class="pc bpc" id="L83" title="1 of 2 branches missed.">            if(!str.matches(EMAIL_REGEX)){</span>
+<span class="fc" id="L84">                throw new Exception(&quot;Enter email again!&quot;);</span>
+            }
+<span class="nc" id="L86">            return str;</span>
+<span class="fc" id="L87">        }catch(Exception e){</span>
+<span class="fc" id="L88">            throw e;</span>
+        }
+    }
+    
+    public static String getPhone(String str) throws Exception{
+        try{
+<span class="fc bfc" id="L94" title="All 2 branches covered.">            if(!str.matches(PHONE_REGEX)){</span>
+<span class="fc" id="L95">                throw new Exception(&quot;Phone must in format 000-000-0000!&quot;);</span>
+            }
+<span class="fc" id="L97">            return str;</span>
+<span class="fc" id="L98">        }catch(Exception e){</span>
+<span class="fc" id="L99">            throw e;</span>
+        }
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

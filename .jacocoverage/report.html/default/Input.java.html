@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Input.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;DoctorManagement&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Input.java</span></div><h1>Input.java</h1><pre class="source lang-java linenums">
+import Validation.Validation;
+import java.text.SimpleDateFormat;
+import java.util.Scanner;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author ASUS
+ */
+<span class="nc" id="L16">public class Input {</span>
+//    private static final String EMAIL_REGEX = &quot;^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$&quot;;
+//    private static final String PHONE_REGEX = &quot;\\b\\d{3}([-])\\d{3}\\1\\d{4}\\b&quot;;
+//    public static boolean check = false;
+//    public static ArrayList&lt;String&gt; fail = new ArrayList&lt;&gt;();
+    public static String getName(String mess) {
+<span class="nc" id="L22">        String name = &quot;&quot;;</span>
+<span class="nc" id="L23">        Scanner sc = new Scanner(System.in);</span>
+        do {        
+<span class="nc" id="L25">            System.out.println(mess);</span>
+            try {              
+<span class="nc" id="L27">                name = sc.nextLine();</span>
+<span class="nc" id="L28">                String namecheck = Validation.getName(name);</span>
+<span class="nc bnc" id="L29" title="All 2 branches missed.">                if(name.equals(namecheck)){</span>
+<span class="nc" id="L30">                    return namecheck;</span>
+                }
+<span class="nc" id="L32">            } catch (Exception ex) {</span>
+<span class="nc" id="L33">                System.out.println(ex.getMessage());</span>
+<span class="nc" id="L34">            }</span>
+<span class="nc" id="L35">        } while (true);</span>
+    }
+    
+    
+    
+    public static String getDob(String mess) {
+<span class="nc" id="L41">        Scanner sc = new Scanner(System.in);</span>
+<span class="nc" id="L42">        SimpleDateFormat dateFormat = new SimpleDateFormat(&quot;dd/MM/yyyy&quot;);</span>
+<span class="nc" id="L43">        dateFormat.setLenient(false);</span>
+<span class="nc" id="L44">        String text = &quot;&quot;;</span>
+        do {
+<span class="nc" id="L46">            System.out.print(mess);</span>
+            try {              
+<span class="nc" id="L48">                text = sc.nextLine();</span>
+<span class="nc" id="L49">                String dobcheck = Validation.getDob(text);</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">                if(text.equals(dobcheck)){</span>
+<span class="nc" id="L51">                    return dobcheck;</span>
+                }
+<span class="nc" id="L53">            } catch (Exception ex) {</span>
+<span class="nc" id="L54">                System.out.println(ex.getMessage());</span>
+<span class="nc" id="L55">            } </span>
+<span class="nc" id="L56">        }while(true);</span>
+        
+    }
+    
+    public static String getSpec(String mess) {
+<span class="nc" id="L61">        String spec = &quot;&quot;;</span>
+<span class="nc" id="L62">        Scanner sc = new Scanner(System.in);</span>
+        do {
+<span class="nc" id="L64">            System.out.println(mess);</span>
+            try{
+<span class="nc" id="L66">            spec = sc.nextLine();</span>
+<span class="nc" id="L67">            String speccheck = Validation.getSpec(spec);</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">            if(spec.equals(speccheck)){</span>
+<span class="nc" id="L69">                return speccheck;</span>
+            }
+<span class="nc" id="L71">            }catch(Exception e){</span>
+<span class="nc" id="L72">                System.out.println(e.getMessage());</span>
+<span class="nc" id="L73">            }</span>
+<span class="nc" id="L74">        } while (true);</span>
+    }
+    
+    public static int getState(String mess) throws Exception {
+<span class="nc" id="L78">        Scanner in = new Scanner(System.in);</span>
+<span class="nc" id="L79">        String state = &quot;&quot;;</span>
+        do {
+<span class="nc" id="L81">            System.out.print(mess);</span>
+            try {               
+<span class="nc" id="L83">                state = in.nextLine();</span>
+<span class="nc" id="L84">                int statecheck = Validation.getState(state);</span>
+<span class="nc" id="L85">                return statecheck;</span>
+<span class="nc" id="L86">            } catch (Exception e) {</span>
+<span class="nc" id="L87">                System.out.println(e.getMessage());</span>
+            }
+<span class="nc" id="L89">        } while (true);</span>
+    }
+    
+    public static String getEmail(String mess){
+<span class="nc" id="L93">        String email = &quot;&quot;;</span>
+<span class="nc" id="L94">        Scanner sc = new Scanner(System.in);</span>
+        do {
+<span class="nc" id="L96">            System.out.println(mess);</span>
+            try{
+<span class="nc" id="L98">            email = sc.nextLine();</span>
+<span class="nc" id="L99">            String emailcheck = Validation.getEmail(email);</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">            if(email.equals(emailcheck)){</span>
+<span class="nc" id="L101">                return emailcheck;</span>
+            }
+<span class="nc" id="L103">            }catch(Exception e){</span>
+<span class="nc" id="L104">                System.out.println(e.getMessage());</span>
+<span class="nc" id="L105">            }</span>
+<span class="nc" id="L106">        } while (true);</span>
+    }
+    
+    public static String getPhone(String mess){
+<span class="nc" id="L110">        String phone = &quot;&quot;;</span>
+<span class="nc" id="L111">        Scanner sc = new Scanner(System.in);</span>
+        do {
+<span class="nc" id="L113">            System.out.println(mess);</span>
+            try{
+<span class="nc" id="L115">            phone = sc.nextLine();</span>
+<span class="nc" id="L116">            String phonecheck = Validation.getPhone(phone);</span>
+<span class="nc bnc" id="L117" title="All 2 branches missed.">            if(phone.equals(phonecheck)){</span>
+<span class="nc" id="L118">                return phonecheck;</span>
+            }
+<span class="nc" id="L120">            }catch(Exception e){</span>
+<span class="nc" id="L121">                System.out.println(e.getMessage());</span>
+<span class="nc" id="L122">            }</span>
+<span class="nc" id="L123">        } while (true);</span>
+    }
+    
+    public static int getID() {
+<span class="nc" id="L127">        Scanner sc = new Scanner(System.in);</span>
+<span class="nc" id="L128">        String id = &quot;&quot;;</span>
+        do {
+<span class="nc" id="L130">            System.out.println(&quot;Enter id: &quot;);</span>
+            try {              
+<span class="nc" id="L132">                id = sc.nextLine();</span>
+<span class="nc" id="L133">                int idcheck = Validation.getID(id);</span>
+<span class="nc" id="L134">                return idcheck;</span>
+<span class="nc" id="L135">            } catch (NumberFormatException e) {</span>
+<span class="nc" id="L136">                System.out.println(e.getMessage());</span>
+<span class="nc" id="L137">            } catch (Exception ex) {</span>
+<span class="nc" id="L138">                System.out.println(ex.getMessage());</span>
+<span class="nc" id="L139">            }</span>
+<span class="nc" id="L140">        } while (true);</span>
+    }
+    
+    public static int getChoice(String mess) {
+<span class="nc" id="L144">        Scanner sc = new Scanner(System.in);</span>
+        int choice;
+        do {
+            try {
+<span class="nc" id="L148">                System.out.print(mess);</span>
+<span class="nc" id="L149">                choice = Integer.parseInt(sc.nextLine());</span>
+<span class="nc bnc" id="L150" title="All 4 branches missed.">                if (choice &gt; 8 || choice &lt; 1) {</span>
+<span class="nc" id="L151">                    System.out.println(&quot;Please choose from 1 to 8!&quot;);</span>
+<span class="nc" id="L152">                    continue;</span>
+                }
+<span class="nc" id="L154">            } catch (NumberFormatException e) {</span>
+<span class="nc" id="L155">                System.out.println(&quot;Invalid choice!&quot;);</span>
+<span class="nc" id="L156">                continue;</span>
+<span class="nc" id="L157">            }</span>
+            break;
+        } while (true);
+<span class="nc" id="L160">        return choice;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
