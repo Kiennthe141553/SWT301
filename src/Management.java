@@ -45,11 +45,11 @@ public class Management {
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getId() == id) {
                 check = 1;
-                list.get(i).setName(v.getName("Enter doctor name:"));
+                list.get(i).setName(v.getName("Enter  name:"));
                 list.get(i).setDob(v.getDob("Enter dob:"));
                 list.get(i).setSpecialization(v.getSpec("Enter specialization:"));
-                list.get(i).setState(v.getState("Enter doctor state:"));
-                list.get(i).setEmail(v.getEmail("Enter doctor email:"));
+                list.get(i).setState(v.getState("Enter  state:"));
+                list.get(i).setEmail(v.getEmail("Enter  email:"));
                 list.get(i).setPhone(v.getPhone("Enter phone:"));
             }
         }
